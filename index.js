@@ -1,8 +1,6 @@
 const express = require("express");
-
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const cors = require("cors");
-const ObjectId = require("mongodb").ObjectId;
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -10,8 +8,21 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri =
-  `mongodb+srv://dbuser1:TuKAGyXAVaONttf5@bappy-practice-db.nb2hg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+exports.handler = async (event) => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST,GET,PATCH,OPTIONS,PUT,DELETE",
+  };
+  const response = {
+    statusCode: 200,
+    headers: headers,
+    body: JSON.stringify(X),
+  };
+  return response;
+};
+
+const uri = `mongodb+srv://dbuser1:TuKAGyXAVaONttf5@bappy-practice-db.nb2hg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
