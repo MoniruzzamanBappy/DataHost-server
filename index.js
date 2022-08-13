@@ -42,35 +42,10 @@ async function run() {
 
     // add product
     app.post("/product", async (req, res) => {
-      const newTodo = req.body;
-      const result = await todoCollection.insertOne(newTodo);
+      const newProduct = req.body;
+      const result = await todoCollection.insertOne(newProduct);
       res.send(result);
     });
-
-    // // update user
-    // app.put("/todo/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const query = { _id: ObjectId(id) };
-    //   const updatedTodo = req.body;
-    //   const options = { upsert: true };
-    //   const updateDoc = {
-    //     $set: {
-    //       isComplete: updatedTodo.isComplete,
-    //     },
-    //   };
-    //   const result = await todoCollection.updateOne(query, updateDoc, options);
-
-    //   res.send(result);
-    // });
-
-    // // user delete
-    // app.delete("/todo/:id", async (req, res) => {
-    //   const id = req.params.id;
-    //   const query = { _id: ObjectId(id) };
-    //   const result = await todoCollection.deleteOne(query);
-
-    //   res.send(result);
-    // });
   } finally {
     // await client.close();
   }
